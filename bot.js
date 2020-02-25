@@ -56,10 +56,9 @@ client.on('message', message => {
                                 }
                                 message.channel.send(
                                   {embed: {
-                                    title: jsonobj.data.children[0].metadata.legend_name,
+                                    title: user,
                                     url: "https://discordapp.com", // titleプロパティのテキストに紐付けられるURL
-                                    description: "This is description. [URLを埋め込むことも出来る](https://discordapp.com)\n" +
-                                                 "***embedの中でもMarkDownを利用できます***",
+                                    description: "キャラクター: " + jsonobj.data.children[0].metadata.legend_name
                                     color: 7506394,
                                     timestamp: new Date(),
                                     footer: {
