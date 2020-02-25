@@ -15,8 +15,18 @@ client.on('message', message => {
         message.channel.send("```\nコマンド:\n^-apex <User> (PCユーザー)```");
     }
     else if (message.content.startsWith(prefix + 'apex')) {
-        let args = message.content.split(" ").slice(1);
-        message.channel.send(args);
+        let user = message.content.split(" ").slice(1);
+        var options = {
+            url: 'https://api.github.com/repos/request/' + user,
+            headers: {
+                'TRN-Api-Key': '0379bb22-bba4-4f6a-873d-1cdf05b0a847'
+            }
+        };
+        request.get(options, function(error, response, body) {
+            console.log("Error: " + error);
+            console.log("Response: " + response);
+            console.log("Body: " + body);
+        });
     }
 });
 
