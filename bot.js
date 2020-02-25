@@ -25,56 +25,62 @@ client.on('message', message => {
         request.get(options, function(error, response, body) {
             const jsonobj = JSON.parse(body);
             if(jsonobj.hasOwnProperty('data')){
-                message.channel.send(
-                  {embed: {
-                    title: "タイトル",
-                    url: "https://discordapp.com", // titleプロパティのテキストに紐付けられるURL
-                    description: "This is description. [URLを埋め込むことも出来る](https://discordapp.com)\n" +
-                                 "***embedの中でもMarkDownを利用できます***",
-                    color: 7506394,
-                    timestamp: new Date(),
-                    footer: {
-                      icon_url: client.user.avatarURL,
-                      text: "©️ example | footer text"
-                    },
-                    thumbnail: {
-                      url: "https://trackercdn.com/cdn/apex.tracker.gg/legends/pathfinder-tile.png"
-                    },
-                    image: {
-                    url: "https://trackercdn.com/cdn/apex.tracker.gg/legends/pathfinder-concept-bg-small.jpg"
-                    },
-                    fields: [
-                      {
-                        name: "field :one:",
-                        value: "*ここはfield 1の内容だよ*"
-                      },
-                      {
-                        name: "field :two:",
-                        value: "~~ここはfield 2の内容だよ~~"
-                      },
-                      {
-                        name: "field :three:",
-                        value: "__ここはfield 3の内容だよ__"
-                      },
-                      {
-                        name: "inline field :cat:",
-                        value: "`これはinlineのfieldだよ`",
-                        inline: true
-                      },
-                      {
-                        name: "inline field :dog:",
-                        value: "[これもinlineのfieldだよ](https://discordapp.com)",
-                        inline: true
-                      }
-                    ]
-                  }}
-                );
                 if(jsonobj.data.hasOwnProperty('children')){
-                    console.log("2: " + jsonobj.data.children[0].id);
-                    console.log("2: " + jsonobj.data.children.length);
+                    if(jsonobj.data.children.length > 0){
+                        if(jsonobj.data.children[0].hasOwnProperty('metadata')){
+                            if(jsonobj.data.children[0].metadata.hasOwnProperty('legend_name')){
+                                console.log("2: " + jsonobj.data.children[0].metadata.legend_name);
+                                
+                                message.channel.send(
+                                  {embed: {
+                                    title: jsonobj.data.children[0].metadata.legend_name,
+                                    url: "https://discordapp.com", // titleプロパティのテキストに紐付けられるURL
+                                    description: "This is description. [URLを埋め込むことも出来る](https://discordapp.com)\n" +
+                                                 "***embedの中でもMarkDownを利用できます***",
+                                    color: 7506394,
+                                    timestamp: new Date(),
+                                    footer: {
+                                      icon_url: client.user.avatarURL,
+                                      text: "©️ example | footer text"
+                                    },
+                                    thumbnail: {
+                                      url: "https://trackercdn.com/cdn/apex.tracker.gg/legends/pathfinder-tile.png"
+                                    },
+                                    image: {
+                                    url: "https://trackercdn.com/cdn/apex.tracker.gg/legends/pathfinder-concept-bg-small.jpg"
+                                    },
+                                    fields: [
+                                      {
+                                        name: "field :one:",
+                                        value: "*ここはfield 1の内容だよ*"
+                                      },
+                                      {
+                                        name: "field :two:",
+                                        value: "~~ここはfield 2の内容だよ~~"
+                                      },
+                                      {
+                                        name: "field :three:",
+                                        value: "__ここはfield 3の内容だよ__"
+                                      },
+                                      {
+                                        name: "inline field :cat:",
+                                        value: "`これはinlineのfieldだよ`",
+                                        inline: true
+                                      },
+                                      {
+                                        name: "inline field :dog:",
+                                        value: "[これもinlineのfieldだよ](https://discordapp.com)",
+                                        inline: true
+                                      }
+                                    ]
+                                  }}
+                                );
+                            }
+                        }
+                    }
                 }
             }
-            console.log("error: not exists");
+            message.channel.send("```\nそのプレイヤーが存在しない、もしくはエラーが発生しました。```");
         });
     }
 });
