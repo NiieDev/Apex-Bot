@@ -83,16 +83,16 @@ client.on('message', message => {
                                     },
                                     fields: [
                                       {
-                                        name: s1,
-                                        value: "数値: " + s1_v + "\nランク: #" + s1_r
+                                        name: "",
+                                        value: "数値: " + "" + "\nランク: #" + ""
                                       },
                                       {
-                                        name: s2,
-                                        value: "数値: " + s2_v + "\nランク: #" + s2_r
+                                        name: "",
+                                        value: "数値: " + "" + "\nランク: #" + ""
                                       },
                                       {
-                                        name: s3,
-                                        value: "数値: " + s3_v + "\nランク: #" + s3_r
+                                        name: "",
+                                        value: "数値: " + "" + "\nランク: #" + ""
                                       }
                                     ]
                                   }}
