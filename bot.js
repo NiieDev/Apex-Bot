@@ -24,7 +24,7 @@ client.on('message', message => {
         };
         request.get(options, function(error, response, body) {
             const jsonobj = JSON.parse(body);
-            console.log("Body: " + jsonobj.data);
+            console.log("Body: " + jsonobj.data.id);
         });
     }
 });
