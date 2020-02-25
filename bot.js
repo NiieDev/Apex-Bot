@@ -12,7 +12,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
     if (message.content.startsWith(prefix + 'help')) {
-        message.author.send("test help message");
+        message.reply("test");
     }
 });
 
