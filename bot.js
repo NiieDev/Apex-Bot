@@ -17,7 +17,7 @@ client.on('message', message => {
     else if (message.content.startsWith(prefix + 'apex')) {
         let user = message.content.split(" ").slice(1);
         var options = {
-            url: 'https://api.github.com/repos/request/' + user,
+            url: 'https://public-api.tracker.gg/apex/v1/standard/profile/5/' + user,
             headers: {
                 'TRN-Api-Key': '0379bb22-bba4-4f6a-873d-1cdf05b0a847'
             }
