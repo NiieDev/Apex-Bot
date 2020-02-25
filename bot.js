@@ -32,26 +32,35 @@ client.on('message', message => {
                                 console.log("2: " + jsonobj.data.children[0].stats[0].legend_name);
                                 let s1 = null;
                                 let s1_v = null;
+                                let s1_r = null;
                                 let s2 = null;
                                 let s2_v = null;
+                                let s2_r = null;
                                 let s3 = null;
                                 let s3_v = null;
+                                let s3_r = null;
                                 if(jsonobj.data.children[0].stats.length > 0){
                                     if(jsonobj.data.children[0].stats.length >= 3){
                                         s1 = jsonobj.data.children[0].stats[0].metadata.name
                                         s1_v = jsonobj.data.children[0].stats[0].value
+                                        s1_r = jsonobj.data.children[0].stats[0].rank
                                         s2 = jsonobj.data.children[0].stats[1].metadata.name
                                         s2_v = jsonobj.data.children[0].stats[1].value
+                                        s2_r = jsonobj.data.children[0].stats[1].rank
                                         s3 = jsonobj.data.children[0].stats[2].metadata.name
                                         s3_v = jsonobj.data.children[0].stats[2].value
+                                        s3_r = jsonobj.data.children[0].stats[2].rank
                                     }else if(jsonobj.data.children[0].stats.length >= 2){
                                         s1 = jsonobj.data.children[0].stats[0].metadata.name
                                         s1_v = jsonobj.data.children[0].stats[0].value
+                                        s1_r = jsonobj.data.children[0].stats[0].rank
                                         s2 = jsonobj.data.children[0].stats[1].metadata.name
                                         s2_v = jsonobj.data.children[0].stats[1].value
+                                        s2_r = jsonobj.data.children[0].stats[1].rank
                                     }else{
                                         s1 = jsonobj.data.children[0].stats[0].metadata.name
                                         s1_v = jsonobj.data.children[0].stats[0].value
+                                        s1_r = jsonobj.data.children[0].stats[0].rank
                                     }
                                 }
                                 message.channel.send(
@@ -75,25 +84,15 @@ client.on('message', message => {
                                     fields: [
                                       {
                                         name: s1,
-                                        value: "*ここはfield 1の内容だよ*\ntest" + s1_v
+                                        value: "数値: " + s1_v + "\nランク: #" + s1_r
                                       },
                                       {
-                                        name: "field :two:",
-                                        value: "~~ここはfield 2の内容だよ~~"
+                                        name: s2,
+                                        value: "数値: " + s2_v + "\nランク: #" + s2_r
                                       },
                                       {
-                                        name: "field :three:",
-                                        value: "__ここはfield 3の内容だよ__"
-                                      },
-                                      {
-                                        name: "inline field :cat:",
-                                        value: "`これはinlineのfieldだよ`",
-                                        inline: true
-                                      },
-                                      {
-                                        name: "inline field :dog:",
-                                        value: "[これもinlineのfieldだよ](https://discordapp.com)",
-                                        inline: true
+                                        name: s3,
+                                        value: "数値: " + s3_v + "\nランク: #" + s3_r
                                       }
                                     ]
                                   }}
