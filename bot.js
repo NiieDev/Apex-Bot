@@ -38,10 +38,10 @@ client.on('message', message => {
                       text: "©️ example | footer text"
                     },
                     thumbnail: {
-                      url: "https://cdn.discordapp.com/embed/avatars/0.png"
+                      url: "https://trackercdn.com/cdn/apex.tracker.gg/legends/pathfinder-tile.png"
                     },
                     image: {
-                    url: "https://cdn.discordapp.com/embed/avatars/0.png"
+                    url: "https://trackercdn.com/cdn/apex.tracker.gg/legends/pathfinder-concept-bg-small.jpg"
                     },
                     fields: [
                       {
