@@ -27,10 +27,33 @@ client.on('message', message => {
             if(jsonobj.hasOwnProperty('data')){
                 if(jsonobj.data.hasOwnProperty('children')){
                     if(jsonobj.data.children.length > 0){
-                        if(jsonobj.data.children[0].hasOwnProperty('metadata')){
+                        if(jsonobj.data.children[0].hasOwnProperty('metadata') && jsonobj.data.children[0].hasOwnProperty('stats')){
                             if(jsonobj.data.children[0].metadata.hasOwnProperty('legend_name')){
-                                console.log("2: " + jsonobj.data.children[0].metadata.legend_name);
-                                
+                                console.log("2: " + jsonobj.data.children[0].stats[0].legend_name);
+                                let s1 = null;
+                                let s1_v = null;
+                                let s2 = null;
+                                let s2_v = null;
+                                let s3 = null;
+                                let s3_v = null;
+                                if(jsonobj.data.children[0].stats.length > 0){
+                                    if(jsonobj.data.children[0].stats.length >= 3){
+                                        s1 = jsonobj.data.children[0].stats[0].metadata.name
+                                        s1_v = jsonobj.data.children[0].stats[0].value
+                                        s2 = jsonobj.data.children[0].stats[1].metadata.name
+                                        s2_v = jsonobj.data.children[0].stats[1].value
+                                        s3 = jsonobj.data.children[0].stats[2].metadata.name
+                                        s3_v = jsonobj.data.children[0].stats[2].value
+                                    }else if(jsonobj.data.children[0].stats.length >= 2){
+                                        s1 = jsonobj.data.children[0].stats[0].metadata.name
+                                        s1_v = jsonobj.data.children[0].stats[0].value
+                                        s2 = jsonobj.data.children[0].stats[1].metadata.name
+                                        s2_v = jsonobj.data.children[0].stats[1].value
+                                    }else{
+                                        s1 = jsonobj.data.children[0].stats[0].metadata.name
+                                        s1_v = jsonobj.data.children[0].stats[0].value
+                                    }
+                                }
                                 message.channel.send(
                                   {embed: {
                                     title: jsonobj.data.children[0].metadata.legend_name,
@@ -51,8 +74,8 @@ client.on('message', message => {
                                     },
                                     fields: [
                                       {
-                                        name: "field :one:",
-                                        value: "*ここはfield 1の内容だよ*"
+                                        name: s1,
+                                        value: "*ここはfield 1の内容だよ*\ntest" + s1_v
                                       },
                                       {
                                         name: "field :two:",
