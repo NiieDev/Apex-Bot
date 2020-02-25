@@ -24,13 +24,6 @@ client.on('message', message => {
         };
         request.get(options, function(error, response, body) {
             const jsonobj = JSON.parse(body);
-
-            console.log(obj.count);
-            // expected output: 42
-
-            console.log(obj.result);
-            // expected output: true
-
             console.log("Body: " + jsonobj.data);
         });
     }
