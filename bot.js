@@ -56,7 +56,7 @@ client.on('message', message => {
                                 }
                                 message.channel.send(
                                   {embed: {
-                                    title: "test",
+                                    title: user + "のステータス",
                                     url: "https://discordapp.com", // titleプロパティのテキストに紐付けられるURL
                                     description: "キャラクター: " + jsonobj.data.children[0].metadata.legend_name,
                                     color: 7506394,
