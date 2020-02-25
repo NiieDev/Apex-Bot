@@ -69,8 +69,8 @@ client.on('message', message => {
                     ]
                   }}
                 );
-                const array = JSON.stringify(jsonobj.data.children);
-                console.log("Body: " + array);
+                console.log("1: " + jsonobj.data.children);
+                console.log("2: " + jsonobj.data.children[0]);
             }else{
                 console.log("error: not exists");
             }
