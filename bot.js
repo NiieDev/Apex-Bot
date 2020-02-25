@@ -25,6 +25,50 @@ client.on('message', message => {
         request.get(options, function(error, response, body) {
             const jsonobj = JSON.parse(body);
             if(jsonobj.hasOwnProperty('data')){
+                message.channel.send(
+                  {embed: {
+                    title: "タイトル",
+                    url: "https://discordapp.com", // titleプロパティのテキストに紐付けられるURL
+                    description: "This is description. [URLを埋め込むことも出来る](https://discordapp.com)\n" +
+                                 "***embedの中でもMarkDownを利用できます***",
+                    color: 7506394,
+                    timestamp: new Date(),
+                    footer: {
+                      icon_url: client.user.avatarURL,
+                      text: "©️ example | footer text"
+                    },
+                    thumbnail: {
+                      url: "https://cdn.discordapp.com/embed/avatars/0.png"
+                    },
+                    image: {
+                    url: "https://cdn.discordapp.com/embed/avatars/0.png"
+                    },
+                    fields: [
+                      {
+                        name: "field :one:",
+                        value: "*ここはfield 1の内容だよ*"
+                      },
+                      {
+                        name: "field :two:",
+                        value: "~~ここはfield 2の内容だよ~~"
+                      },
+                      {
+                        name: "field :three:",
+                        value: "__ここはfield 3の内容だよ__"
+                      },
+                      {
+                        name: "inline field :cat:",
+                        value: "`これはinlineのfieldだよ`",
+                        inline: true
+                      },
+                      {
+                        name: "inline field :dog:",
+                        value: "[これもinlineのfieldだよ](https://discordapp.com)",
+                        inline: true
+                      }
+                    ]
+                  }}
+                );
                 console.log("Body: " + jsonobj.data.id);
             }else{
                 console.log("error: not exists");
