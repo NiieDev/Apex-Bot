@@ -41,13 +41,13 @@ client.on('message', message => {
                                     timestamp: new Date(),
                                     footer: {
                                       icon_url: client.user.avatarURL,
-                                      text: "©️ example | footer text"
+                                      text: "API: https://apex.tracker.gg/"
                                     },
                                     thumbnail: {
-                                      url: "https://trackercdn.com/cdn/apex.tracker.gg/legends/pathfinder-tile.png"
+                                      url: jsonobj.data.children[0].metadata.icon
                                     },
                                     image: {
-                                    url: "https://trackercdn.com/cdn/apex.tracker.gg/legends/pathfinder-concept-bg-small.jpg"
+                                    url: jsonobj.data.children[0].metadata.bgimage
                                     },
                                     fields: [
                                       {
@@ -75,6 +75,7 @@ client.on('message', message => {
                                     ]
                                   }}
                                 );
+                                return;
                             }
                         }
                     }
