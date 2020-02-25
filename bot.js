@@ -69,11 +69,12 @@ client.on('message', message => {
                     ]
                   }}
                 );
-                console.log("1: " + jsonobj.data.children);
-                console.log("2: " + jsonobj.data.children[0]);
-            }else{
-                console.log("error: not exists");
+                if(jsonobj.data.hasOwnProperty('children')){
+                    console.log("2: " + jsonobj.data.children[0].id);
+                    console.log("2: " + jsonobj.data.children.length);
+                }
             }
+            console.log("error: not exists");
         });
     }
 });
