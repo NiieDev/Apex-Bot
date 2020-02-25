@@ -58,7 +58,7 @@ client.on('message', message => {
                                   {embed: {
                                     title: user,
                                     url: "https://discordapp.com", // titleプロパティのテキストに紐付けられるURL
-                                    description: "キャラクター: " + jsonobj.data.children[0].metadata.legend_name
+                                    description: "キャラクター: " + jsonobj.data.children[0].metadata.legend_name,
                                     color: 7506394,
                                     timestamp: new Date(),
                                     footer: {
