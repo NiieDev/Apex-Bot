@@ -29,7 +29,6 @@ client.on('message', message => {
                     if(jsonobj.data.children.length > 0){
                         if(jsonobj.data.children[0].hasOwnProperty('metadata') && jsonobj.data.children[0].hasOwnProperty('stats')){
                             if(jsonobj.data.children[0].metadata.hasOwnProperty('legend_name')){
-                                console.log("2: " + jsonobj.data.children[0].stats[0].legend_name);
                                 let s1 = "存在しません";
                                 let s1_v = "存在しません";
                                 let s2 = "存在しません";
