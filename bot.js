@@ -57,7 +57,7 @@ client.on('message', message => {
                                 message.channel.send(
                                   {embed: {
                                     title: user + "のステータス",
-                                    url: "https://discordapp.com", // titleプロパティのテキストに紐付けられるURL
+                                    url: "https://apex.tracker.gg/profile/pc/" + user,
                                     description: "キャラクター: " + jsonobj.data.children[0].metadata.legend_name,
                                     color: 7506394,
                                     timestamp: new Date(),
