@@ -92,6 +92,14 @@ client.on('message', message => {
                     }
                 }
             }
+            if(jsonobj.hasOwnProperty('errors')){
+                if(jsonobj.errors.length > 0){
+                    if(jsonobj.errors[0].hasOwnProperty('message')){
+                        message.channel.send("```\nエラーが発生しました: " + jsonobj.errors[0].message + "```");
+                        return;
+                    }
+                }
+            }
             message.channel.send("```\nそのプレイヤーが存在しない、もしくはエラーが発生しました。```");
         });
     }
